@@ -20,10 +20,20 @@ let mapCar = cars.map((car) => {
     return `The "${car.make} ${car.model}" was made in ${car.year}`
 })
 
+// return an object for each car that includes the existing data 
+// as a single full string property named `display`
+// for example '2012 ford fusion'
+let displayData = newCars.map((car) => {
+    let result = car
+    result.display = car.year + ' ' + car.make + ' ' + car.model
+    return result
+})
+
 let reduceYearCar = cars.reduce((table, car) => {
     const { make, model, year } = car
     const recentCars = table[year] || []
     const oldCars = recentCars.concat({ make, model })
     return { ...table, [year]: oldCars}
 }, {})
-console.log(reduceYearCar)
+
+console.log(displayData)
