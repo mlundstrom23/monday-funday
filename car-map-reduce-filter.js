@@ -21,9 +21,9 @@ let mapCar = cars.map((car) => {
 })
 
 let reduceYearCar = cars.reduce((table, car) => {
-    
-    const recentCars = table[car.year] || []
-    const oldCars = recentCars.concat({ car.make, car.model })
-    return { ...table, [car.year]: oldCars}
+    const { make, model, year } = car
+    const recentCars = table[year] || []
+    const oldCars = recentCars.concat({ make, model })
+    return { ...table, [year]: oldCars}
 }, {})
 console.log(reduceYearCar)
